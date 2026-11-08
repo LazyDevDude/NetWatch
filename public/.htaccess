@@ -1,0 +1,22 @@
+Options -Indexes
+
+RewriteEngine On
+RewriteBase /Netwatch/public/
+
+# Keep real assets, APIs, and legacy entry points directly accessible.
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+RewriteRule ^ index.php [QSA,L]
+
+<IfModule mod_headers.c>
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set X-Frame-Options "SAMEORIGIN"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+    Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+</IfModule>
+
+<FilesMatch "\.(env|ini|log|sql|json|md|py|sh|ps1)$">
+    Require all denied
+</FilesMatch>

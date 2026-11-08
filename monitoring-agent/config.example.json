@@ -1,0 +1,6 @@
+{
+  "api_url": "http://localhost/netwatch/public/api/monitoring.php",
+  "agent_key": "replace-with-a-long-random-secret",
+  "poll_seconds": 30,
+  "timeout_seconds": 15
+}
